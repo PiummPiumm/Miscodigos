@@ -11,7 +11,7 @@
     )
 
     # $auth = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("${usuario}:$password"))
-    $auth = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("usuario1:user123"))
+    $auth = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("USUARIO:CONTRASEÑA"))
     
     $headers = @{ Authorization = "Basic $auth" }
     if($SSL){
@@ -24,6 +24,6 @@
     }
     invoke-RestMethod -Uri "${protocol}://${server}:$Port/$Database/$file" -Method GET -Headers $headers
     Remove-Variable -Name headers
-    # Remove-Variable -Name auth
+    Remove-Variable -Name auth
 }
-get-couchdb -Server localhost -SSL $true -Database instalite
+get-couchdb -Server localhost -SSL $true -Database basededatos
